@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: user-svc
+  name: user-svc
+spec:
+  ports:
+  - name: user-svc
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: user
+  type: ClusterIP
+status:
+  loadBalancer: {}

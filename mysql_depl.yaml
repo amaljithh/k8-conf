@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mysqldb
+  name: mysqldb-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysqldb
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mysqldb
+    spec:
+      containers:
+      - image: mysql
+        name: mysqldb
+        env:
+        - name: MYSQL_DATABASE
+          value: "task_mgmt_users"
+        - name: MYSQL_PASSWORD
+          value: "taskmgmt"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "taskmgmt"
+        - name: MYSQL_TCP_PORT
+          value: "3307"
